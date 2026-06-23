@@ -1,9 +1,9 @@
-// script.js – interactive features for the portfolio
+// ===== ALL JAVASCRIPT =====
 
 (function() {
   console.log('✅ Praveen Kumar portfolio loaded');
 
-  // ---- DOWNLOAD RESUME (Creates a downloadable resume) ----
+  // ---- DOWNLOAD RESUME ----
   const downloadBtn = document.getElementById('downloadResume');
   if (downloadBtn) {
     downloadBtn.addEventListener('click', function(e) {
@@ -61,7 +61,7 @@ CERTIFICATIONS
     footer.appendChild(yearSpan);
   }
 
-  // ---- OPTIONAL: CLICK LOGGING FOR PROJECTS/INTERNS ----
+  // ---- CLICK LOGGING FOR PROJECTS/INTERNS ----
   const items = document.querySelectorAll('.project-item, .intern-item');
   items.forEach((item) => {
     item.addEventListener('click', function() {

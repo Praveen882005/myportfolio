@@ -1,5 +1,4 @@
-/* style.css – complete styles for the portfolio */
-
+/* ===== ALL CSS STYLES ===== */
 * {
   margin: 0;
   padding: 0;
@@ -92,6 +91,7 @@ body {
   border-radius: 40px;
   font-weight: 600;
   transition: 0.2s;
+  cursor: pointer;
 }
 .btn-download i {
   color: white !important;
