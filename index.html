@@ -43,6 +43,21 @@
       margin-bottom: 2rem;
     }
 
+    .profile-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 25%; /* Adjusts vertical positioning - shows upper part of image */
+  border: 4px solid #2563eb;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
+  flex-shrink: 0;
+   }
     .name-title h1 {
       font-size: 2.8rem;
       font-weight: 700;
@@ -274,9 +289,11 @@
     @media (max-width: 700px) {
       .container { padding: 1.5rem; }
       .profile-header { flex-direction: column; gap: 0.6rem; }
+      .profile-left { flex-direction: column; text-align: center; width: 100%; }
       .contact-links { padding: 0.6rem 1rem; border-radius: 40px; width: 100%; justify-content: center; }
       .edu-grid { grid-template-columns: 1fr; gap: 1rem; }
       .name-title h1 { font-size: 2.2rem; }
+      .profile-image { width: 100px; height: 100px; }
     }
   </style>
 </head>
@@ -284,9 +301,13 @@
   <div class="container" id="app">
     <!-- ===== HEADER ===== -->
     <div class="profile-header">
-      <div class="name-title">
-        <h1>Praveen Kumar I</h1>
-        <span class="badge"><i class="fas fa-code"></i> Software Engineer</span>
+      <div class="profile-left">
+        <!-- PROFILE IMAGE - Replace 'profile.jpg' with your image filename -->
+        <img src="profile.png" alt="Praveen Kumar" class="profile-image" id="profileImage" />
+        <div class="name-title">
+          <h1>Praveen Kumar I</h1>
+          <span class="badge"><i class="fas fa-code"></i> Software Engineer</span>
+        </div>
       </div>
       <div class="contact-links">
         <a href="mailto:cgmpraveenkumar@gmail.com"><i class="fas fa-envelope"></i> Email</a>
@@ -393,31 +414,62 @@
     (function() {
       console.log('✅ Praveen Kumar portfolio loaded');
 
-      // ---- DOWNLOAD RESUME ----
+      // ---- DOWNLOAD RESUME (PDF) ----
       const downloadBtn = document.getElementById('downloadResume');
       if (downloadBtn) {
         downloadBtn.addEventListener('click', function(e) {
           e.preventDefault();
+          
+          // CHANGE THIS: Replace 'resume.pdf' with your actual PDF filename
+          const pdfUrl = 'resume.pdf';
+          
+          // Try to download the PDF
+          fetch(pdfUrl)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('PDF not found');
+              }
+              return response.blob();
+            })
+            .then(blob => {
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = 'Praveen_Kumar_Resume.pdf';
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+            })
+            .catch(() => {
+              // Fallback: If PDF not found, download as TXT
+              alert('PDF resume not found. Downloading text version instead.');
+              downloadTxtResume();
+            });
+        });
+      }
 
-          const resumeContent = `PRAVEEN KUMAR I - SOFTWARE ENGINEER
+      // Fallback TXT resume function
+      function downloadTxtResume() {
+        const resumeContent = `PRAVEEN KUMAR I - SOFTWARE ENGINEER
 Email: cgmpraveenkumar@gmail.com | Phone: +91 7603861661
 Location: Thiruvanmnalai, Tamilnadu
 
 ABOUT
-Software Engineering undergraduate with hands-on experience in Python, Java, and full-stack web development. Skilled in building database-driven applications, AI-powered solutions, and scalable software systems. Strong problem-solving mindset with a passion for clean code, automation, and real-world software development.
+Software Engineering undergraduate with hands-on experience in Python, Java, and full-stack web development.
 
 EDUCATION
-B.Tech in Information Technology - SNS College of Engineering, Coimbatore (CGPA: 7.65/10) Sep 2023 – Present
-Higher Secondary Education (HSC) - Maharishi Higher Secondary School (72.5%) Aug 2021 – May 2022
+B.Tech in Information Technology - SNS College of Engineering, Coimbatore (CGPA: 7.65/10)
+Higher Secondary Education (HSC) - Maharishi Higher Secondary School (72.5%)
 
 ACADEMIC PROJECTS
-- Limited Battery System: Designed a rechargeable battery system as an alternative to AA/AAA batteries.
-- Vehicle Information Management System: Managed cab owner details, service records, and fine history.
-- Agri-Doctor (AI-Based Agricultural Assistant): Plant disease detection using image recognition with chatbot support.
+- Limited Battery System: Rechargeable battery system as alternative to AA/AAA batteries.
+- Vehicle Information Management System: Cab owner details, service records, fine history.
+- Agri-Doctor: AI-powered plant disease detection with chatbot support.
 
 INTERNSHIPS
-- Artificial Intelligence Intern @ Retech Solutions Pvt. Ltd. (Jun 2025 – Jul 2025): Built AI-based chatbot for customer support.
-- Industry Training (AI & Python) @ ByteXL (Nov 2025 – Dec 2025): Completed Azure DP-900 certification.
+- AI Intern @ Retech Solutions Pvt. Ltd. (Jun-Jul 2025): Built AI-based chatbot.
+- Industry Training @ ByteXL (Nov-Dec 2025): Azure DP-900 certification.
 
 TECHNICAL SKILLS
 Python, Java, C, OOPs, DSA Basics, HTML, CSS, JavaScript, Flutter, MySQL, Image Recognition, GitHub, VS Code, Canva
@@ -428,16 +480,15 @@ CERTIFICATIONS
 - IBM - Python / AI Fundamentals
 - Preplnsta - Programming & Aptitude Training`;
 
-          const blob = new Blob([resumeContent], { type: 'text/plain' });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'Praveen_Kumar_Resume.txt';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-        });
+        const blob = new Blob([resumeContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Praveen_Kumar_Resume.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
       }
 
       // ---- ADD CURRENT YEAR TO FOOTER ----
@@ -449,6 +500,33 @@ CERTIFICATIONS
         yearSpan.style.color = '#94a3b8';
         yearSpan.textContent = `· ${new Date().getFullYear()}`;
         footer.appendChild(yearSpan);
+      }
+
+      // ---- HANDLE IMAGE ERROR ----
+      const profileImage = document.getElementById('profileImage');
+      if (profileImage) {
+        profileImage.addEventListener('error', function() {
+          // If image fails to load, show initials as fallback
+          this.style.display = 'none';
+          const fallbackDiv = document.createElement('div');
+          fallbackDiv.style.cssText = `
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            border: 4px solid #2563eb;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
+            flex-shrink: 0;
+          `;
+          fallbackDiv.textContent = 'PK';
+          this.parentNode.insertBefore(fallbackDiv, this);
+        });
       }
 
       // ---- CLICK LOGGING FOR PROJECTS/INTERNS ----
