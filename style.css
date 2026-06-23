@@ -1,0 +1,271 @@
+/* style.css – complete styles for the portfolio */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f4f7fc;
+  font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+  color: #1e293b;
+  line-height: 1.6;
+  padding: 2rem 1.5rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
+  padding: 2.5rem 2.8rem;
+  transition: all 0.2s ease;
+}
+
+/* ===== HEADER ===== */
+.profile-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid #e9edf2;
+  padding-bottom: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.name-title h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #0b1e33;
+  line-height: 1.2;
+}
+
+.name-title .badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1e4a7a;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.25rem 1rem;
+  border-radius: 30px;
+  margin-top: 0.3rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.8rem;
+  margin-top: 0.6rem;
+  background: #f8fafc;
+  padding: 0.6rem 1.2rem;
+  border-radius: 60px;
+}
+
+.contact-links a {
+  color: #1e293b;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: 0.2s;
+}
+
+.contact-links a i {
+  color: #2563eb;
+  font-size: 1rem;
+  width: 1.2rem;
+}
+
+.contact-links a:hover {
+  color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.btn-download {
+  background: #2563eb;
+  color: white !important;
+  padding: 0.4rem 1.2rem;
+  border-radius: 40px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+.btn-download i {
+  color: white !important;
+}
+.btn-download:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+}
+
+/* ===== ABOUT ===== */
+.about-text {
+  background: #f9fcff;
+  padding: 1.2rem 1.8rem;
+  border-radius: 1.2rem;
+  border: 1px solid #eef2f6;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: #0b1e33;
+  margin: 2rem 0 1rem 0;
+  border-left: 5px solid #2563eb;
+  padding-left: 0.9rem;
+}
+
+/* ===== EDUCATION ===== */
+.edu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.edu-card {
+  background: #fafcff;
+  border-radius: 1.2rem;
+  padding: 1rem 1.5rem 1.2rem;
+  border: 1px solid #eef2f6;
+  transition: 0.15s;
+}
+.edu-card:hover {
+  border-color: #bdd3f0;
+  background: #f5faff;
+}
+.edu-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0b2a4a;
+  margin-bottom: 0.2rem;
+}
+.edu-card .institute {
+  font-weight: 500;
+  color: #1e4a7a;
+}
+.edu-card .detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: #334155;
+}
+.edu-card .detail span {
+  background: #eef2f6;
+  padding: 0.1rem 0.8rem;
+  border-radius: 40px;
+  font-weight: 500;
+}
+
+/* ===== PROJECTS & INTERNS ===== */
+.project-item, .intern-item {
+  background: #f9fcff;
+  border-radius: 1.2rem;
+  padding: 1rem 1.6rem;
+  margin-bottom: 0.9rem;
+  border: 1px solid #eef2f6;
+  transition: 0.15s;
+}
+.project-item:hover, .intern-item:hover {
+  border-color: #bdd3f0;
+  background: #f5faff;
+}
+.project-item h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #0b2a4a;
+  margin-bottom: 0.2rem;
+}
+.project-item p {
+  color: #334155;
+  font-size: 0.96rem;
+}
+.intern-item h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0b2a4a;
+}
+.intern-item .company {
+  font-weight: 500;
+  color: #2563eb;
+}
+.date-tag {
+  font-size: 0.8rem;
+  background: #e9edf4;
+  padding: 0.1rem 0.8rem;
+  border-radius: 40px;
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-weight: 500;
+}
+
+/* ===== SKILLS ===== */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.7rem;
+  margin-top: 0.3rem;
+}
+.skill-tag {
+  background: #e2eaf9;
+  padding: 0.2rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1e3a6b;
+}
+
+/* ===== CERTIFICATIONS ===== */
+.cert-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.2rem;
+}
+.cert-item {
+  background: #f1f6fd;
+  padding: 0.3rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.cert-item i {
+  color: #2563eb;
+  margin-right: 0.4rem;
+}
+
+/* ===== LOCATION ===== */
+.location-badge {
+  margin-top: 1.8rem;
+  background: #f2f7fe;
+  border-radius: 40px;
+  padding: 0.6rem 1.5rem;
+  display: inline-block;
+}
+
+/* ===== FOOTER ===== */
+.footer-note {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #dce3ec;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .container { padding: 1.5rem; }
+  .profile-header { flex-direction: column; gap: 0.6rem; }
+  .contact-links { padding: 0.6rem 1rem; border-radius: 40px; width: 100%; justify-content: center; }
+  .edu-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .name-title h1 { font-size: 2.2rem; }
+}
